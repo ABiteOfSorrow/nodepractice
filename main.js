@@ -1,22 +1,22 @@
 const http = require('http');
 
-users = ['Tom', 'Andy', 'Jessica', 'Paul'];
+const users = ['Tom', 'Andy', 'Jessica', 'Paul'];
 
-let server = http.createServer(function (request, response) {
+const server = http.createServer((request, response) => {
 
     /* test 1. change url bar's text ex) http://127.0.0.1:3000/programming
        response.end(`<h1>Hello ${request.url}</h1>}`) */
 
     // test 2. 
     // if there is nothing default url = "/""
-    if (request.url === "/") {
+    if (request.url === '/') {
         response.end(`<h1>Welcome developer</h1>`);
     } else if (request.url === `/users`) {
         response.end(`<h1>${users}</h1>`);
-    } else if (request.url.split("/")[1] === 'users') {
+    } else if (request.url.split('/')[1] === 'users') {
     //url : /users/1, /users/2 ...
-        let userIdx = request.url.split("/")[2];
-        let userName = users[userIdx-1];
+        const userIdx = request.url.split('/')[2];
+        const userName = users[userIdx - 1];
 
         response.end(`<h1>${userName}</h1>`);
     } else {
